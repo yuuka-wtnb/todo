@@ -58,6 +58,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="hardlabel" destination="2Vo-fG-xYj" id="WM3-7D-Xnc"/>
                         <outlet property="table" destination="IUR-1R-IV7" id="XQi-h1-NEE"/>
                     </connections>
                 </viewController>

@@ -10,40 +10,54 @@ import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var table: UITableView!
+    @IBOutlet var hardlabel: UILabel!
+    
     var realm: Realm!
-
-    var dos: Results<Todo>!
-
+    
+    var todos: Results<Todo>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // TableViewの初期化
         table.delegate = self
         table.dataSource = self
-
+        
         // Realmの初期化
         realm = try! Realm()
-
-        dos = realm.objects(Todo.self)
+        
+        todos = realm.objects(Todo.self)
         table.reloadData()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dos = realm.objects(Todo.self)
+        todos = realm.objects(Todo.self)
         table.reloadData()
+        
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dos.count
+        return todos.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat  = "yyyy/MM/dd"
-        cell.textLabel?.text = dos[indexPath.row].content + " - " +  dateFormatter.string(from: dos[indexPath.row].duedate)
+        cell.textLabel?.text = todos[indexPath.row].content + " - " +  dateFormatter.string(from: todos[indexPath.row].duedate)
         return cell
+        
+        
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        try! realm.write {
+            realm.delete(todos[indexPath.row])
+        }
+
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
 }
 
