@@ -10,7 +10,7 @@ import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var table: UITableView!
-    @IBOutlet var hardlabel: UILabel!
+    @IBOutlet var difficultyLabel: UILabel!
     
     var realm: Realm!
     
@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         // TableViewの初期化
         table.delegate = self
@@ -28,6 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         todos = realm.objects(Todo.self)
         table.reloadData()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +37,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         todos = realm.objects(Todo.self)
         table.reloadData()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if todos.count <= 3 {
+            difficultyLabel.text = "あ"
+        }else if todos.count <= 5{
+            difficultyLabel.text = "い"
+        }else{
+            difficultyLabel.text = "う"
+        }
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -34,7 +34,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 今日の課題の量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-bY-oTi">
                                 <rect key="frame" x="35" y="97" width="305" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.67584174870000002" green="0.76694113019999999" blue="0.88629806040000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.69807893037796021" green="0.93123430013656616" blue="0.84240549802780151" alpha="0.59907427226027399" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="hardlabel" destination="2Vo-fG-xYj" id="WM3-7D-Xnc"/>
+                        <outlet property="difficultyLabel" destination="2Vo-fG-xYj" id="5o4-rj-IT8"/>
                         <outlet property="table" destination="IUR-1R-IV7" id="XQi-h1-NEE"/>
                     </connections>
                 </viewController>
@@ -128,7 +128,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HAa-eb-qYJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.59999999999999998" green="0.61568627450980395" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.80876404047012329" green="0.91895633935928345" blue="0.94967347383499146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
