@@ -59,10 +59,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat  = "yyyy/MM/dd"
         cell.textLabel?.text = todos[indexPath.row].content + " - " +  dateFormatter.string(from: todos[indexPath.row].duedate)
+        
+        if todos[indexPath.row].done {
+            cell.accessoryType = .checkmark
+            cell.backgroundColor = .orange
+        } else {
+            cell.accessoryType = .none
+            cell.backgroundColor = .white
+        }
+        
         return cell
-        
-        
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        try! realm.write {
+            todos[indexPath.row].done = !todos[indexPath.row].done
+        }
+        
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         try! realm.write {
